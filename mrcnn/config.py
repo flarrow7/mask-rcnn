@@ -37,7 +37,7 @@ class Config(object):
     # handle 2 images of 1024x1024px.
     # Adjust based on your GPU memory and image sizes. Use the highest
     # number that your GPU can handle for best performance.
-    IMAGES_PER_GPU = 1
+    IMAGES_PER_GPU = 2
 
     # Number of training steps per epoch
     # This doesn't need to match the size of the training set. Tensorboard
@@ -55,17 +55,17 @@ class Config(object):
 
     # Backbone Architecture,
     # Currently supported: ['resnet50','resnet101', 'mobilenetv1','mobilenetv2']
-    BACKBONE = None # Override in sub-classes
+    BACKBONE = 'mobilenetv1' # Override in sub-classes
 
     # The strides of each layer of the FPN Pyramid. These values
     # are based on a Resnet101 backbone.
-    BACKBONE_STRIDES = [4, 8, 16, 32, 64] #resnet
+    BACKBONE_STRIDES = [1, 2, 4, 8, 16, 32, 64] #resnet
 
     # Number of classification classes (including background)
     NUM_CLASSES = 1  # Override in sub-classes
 
     # Length of square anchor side in pixels
-    RPN_ANCHOR_SCALES = (32, 64, 128, 256, 512)
+    RPN_ANCHOR_SCALES = (8, 16, 32, 64, 128, 256, 512)
 
     # Ratios of anchors at each cell (width/height)
     # A value of 1 represents a square anchor, and 0.5 is a wide anchor
